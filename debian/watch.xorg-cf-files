@@ -1,0 +1,4 @@
+#git=git://anongit.freedesktop.org/xorg/util/cf
+version=3
+opts="pgpsigurlmangle=s/$/.sig/" \
+https://xorg.freedesktop.org/releases/individual/util/ xorg-cf-files-(.*)\.tar\.gz
