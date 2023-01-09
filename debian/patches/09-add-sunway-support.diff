@@ -82,7 +82,7 @@ diff -Nrup xutils-dev-7.7+5.orig/xorg-cf-files/linux.cf xutils-dev-7.7+5/xorg-cf
  #    define BuildXF86DRI	NO
  #  elif defined(AMD64Architecture)
  #    define BuildXF86DRI	YES
-+#  elif defined(Sw6464Architecture)
++#  elif defined(Sw64Architecture)
 +#    define BuildXF86DRI	YES
  #  else
  #    define BuildXF86DRI	NO
