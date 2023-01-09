@@ -1,3 +1,9 @@
+xutils-dev (1:7.7.2-deepin1) unstable; urgency=medium
+
+  * Add support for RISC-V 64
+
+ -- Clansty <i@gao4.pw>  Mon, 09 Jan 2023 17:25:04 +0800
+
 xutils-dev (1:7.7.1-1+dde) UNRELEASED; urgency=medium
 
   * update
