@@ -4,11 +4,11 @@
  xorg-cf-files/linux.cf   |   10 ++++++++++
  3 files changed, 30 insertions(+)
 
-Index: xutils-dev-7.7.2/xorg-cf-files/linux.cf
+Index: xutils-dev/xorg-cf-files/linux.cf
 ===================================================================
---- xutils-dev-7.7.2.orig/xorg-cf-files/linux.cf
-+++ xutils-dev-7.7.2/xorg-cf-files/linux.cf
-@@ -1173,6 +1173,16 @@ InstallNamedTargetNoClobber(install,file
+--- xutils-dev.orig/xorg-cf-files/linux.cf
++++ xutils-dev/xorg-cf-files/linux.cf
+@@ -1158,6 +1158,16 @@ InstallNamedTargetNoClobber(install,file
  #define TtClientLibs $(TTLIB) $(XTOOLLIB) $(XLIB)
  #define TtClientDepLibs $(DEPTTLIB) $(DEPXTOOLLIB) $(DEPXLIB)
  
@@ -25,10 +25,10 @@ Index: xutils-dev-7.7.2/xorg-cf-files/linux.cf
  #if HaveLib64
  # ifndef LibDirName
  #  define LibDirName		lib64
-Index: xutils-dev-7.7.2/xorg-cf-files/gnu.cf
+Index: xutils-dev/xorg-cf-files/gnu.cf
 ===================================================================
---- xutils-dev-7.7.2.orig/xorg-cf-files/gnu.cf
-+++ xutils-dev-7.7.2/xorg-cf-files/gnu.cf
+--- xutils-dev.orig/xorg-cf-files/gnu.cf
++++ xutils-dev/xorg-cf-files/gnu.cf
 @@ -541,6 +541,16 @@ InstallNamedTargetNoClobber(install,file
  #define TtClientLibs $(TTLIB) $(XTOOLLIB) $(XLIB)
  #define TtClientDepLibs $(DEPTTLIB) $(DEPXTOOLLIB) $(DEPXLIB)
@@ -46,10 +46,10 @@ Index: xutils-dev-7.7.2/xorg-cf-files/gnu.cf
  #ifndef BuildDmx
  #define BuildDmx	YES
  #endif
-Index: xutils-dev-7.7.2/xorg-cf-files/FreeBSD.cf
+Index: xutils-dev/xorg-cf-files/FreeBSD.cf
 ===================================================================
---- xutils-dev-7.7.2.orig/xorg-cf-files/FreeBSD.cf
-+++ xutils-dev-7.7.2/xorg-cf-files/FreeBSD.cf
+--- xutils-dev.orig/xorg-cf-files/FreeBSD.cf
++++ xutils-dev/xorg-cf-files/FreeBSD.cf
 @@ -570,6 +570,16 @@ XCOMM operating system:  OSName (OSMajor
  #endif
  #endif

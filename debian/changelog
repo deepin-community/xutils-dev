@@ -1,3 +1,9 @@
+xutils-dev (1:7.7.2-deepin2) unstable; urgency=medium
+
+  * Add loong64 support
+
+ -- Han Gao <gaohan@iscas.ac.cn>  Sun, 12 Mar 2023 23:25:03 +0800
+
 xutils-dev (1:7.7.2-deepin1) unstable; urgency=medium
 
   * Add support for RISC-V 64

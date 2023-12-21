@@ -5,3 +5,4 @@
 07_gnu_manpath.diff
 09-add-sunway-support.diff
 10_riscv_support.diff
+11_loong_support.diff

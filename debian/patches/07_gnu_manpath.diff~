@@ -1,10 +1,8 @@
 This patch is Debian-specific, see bugs.debian.org/638016
 
-Index: xutils-dev-7.7.2/xorg-cf-files/gnu.cf
-===================================================================
---- xutils-dev-7.7.2.orig/xorg-cf-files/gnu.cf
-+++ xutils-dev-7.7.2/xorg-cf-files/gnu.cf
-@@ -29,6 +29,13 @@ XCOMM $XdotOrg: xc/config/cf/gnu.cf,v 1.
+--- xutils-dev-7.6+5/xorg-cf-files/gnu.cf	2011-08-16 16:06:57.000000000 +0200
++++ xutils-dev-7.6+5/xorg-cf-files/gnu.cf.new	2011-08-16 16:09:58.000000000 +0200
+@@ -29,6 +29,13 @@
  # define GnuBinUtilsMajorVersion	DefaultGnuBinUtilsMajorVersion
  #endif
  
