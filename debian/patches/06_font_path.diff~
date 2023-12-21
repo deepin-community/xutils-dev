@@ -1,8 +1,8 @@
-Index: xutils-dev-7.7.2/xorg-cf-files/X11.tmpl
+Index: xutils-dev/xorg-cf-files/X11.tmpl
 ===================================================================
---- xutils-dev-7.7.2.orig/xorg-cf-files/X11.tmpl
-+++ xutils-dev-7.7.2/xorg-cf-files/X11.tmpl
-@@ -1512,10 +1512,10 @@ FCHOWN_DEFINES = -DHAS_FCHOWN
+--- xutils-dev.orig/xorg-cf-files/X11.tmpl	2006-12-19 20:55:05.000000000 -0500
++++ xutils-dev/xorg-cf-files/X11.tmpl	2006-12-19 20:56:03.000000000 -0500
+@@ -1512,10 +1512,10 @@
  #define DocPdfDir $(DOCDIR)/PDF
  #endif
  #ifndef FontDir

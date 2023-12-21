@@ -1,0 +1,52 @@
+Index: xutils-dev-7.7.2/xorg-cf-files/Imake.cf
+===================================================================
+--- xutils-dev-7.7.2.orig/xorg-cf-files/Imake.cf
++++ xutils-dev-7.7.2/xorg-cf-files/Imake.cf
+@@ -1052,6 +1052,18 @@ XCOMM Keep cpp from replacing path eleme
+ #   undef __riscv
+ #   undef __riscv_xlen
+ # endif
++# if defined(__loongarch__)
++#   undef __loongarch__
++#   if __loongarch_grlen == 64
++#     undef __loongarch_grlen
++#     undef __loongarch_lp64
++#     define LoongArch64Architecture
++#   endif
++#   if __loongarch_grlen == 32
++#     undef __loongarch_grlen
++#     define LoongArch32Architecture
++#   endif
++# endif
+ #endif /* linux || __GLIBC__ */
+ 
+ #if (defined(__Lynx__) || defined(Lynx)) && (defined(i386) || defined(__i386__) || defined(__x86__) || defined(__powerpc__) || defined(__sparc__) || defined(sparc))
+Index: xutils-dev-7.7.2/xorg-cf-files/linux.cf
+===================================================================
+--- xutils-dev-7.7.2.orig/xorg-cf-files/linux.cf
++++ xutils-dev-7.7.2/xorg-cf-files/linux.cf
+@@ -1148,6 +1148,24 @@ InstallNamedTargetNoClobber(install,file
+ # define ServerExtraDefines    -DGCCUSESGAS XFree86ServerDefines -D_XSERVER64
+ #endif /* RiscV64Architecture */
+ 
++#ifdef LoongArch64Architecture
++# ifndef OptimizedCDebugFlags
++#  define OptimizedCDebugFlags -O2 GccAliasingArgs
++# endif
++# define LinuxMachineDefines	-D__loongarch__ -D__loongarch_grlen=64 -D__loongarch_lp64
++# define ServerOSDefines	XFree86ServerOSDefines -DDDXTIME
++# define ServerExtraDefines	-DGCCUSESGAS XFree86ServerDefines -D_XSERVER64
++#endif /* LoongArch64Architecture */
++
++#ifdef LoongArch32Architecture
++# ifndef OptimizedCDebugFlags
++#  define OptimizedCDebugFlags -O2 GccAliasingArgs
++# endif
++# define LinuxMachineDefines	-D__loongarch__ -D__loongarch_grlen=32
++# define ServerOSDefines	XFree86ServerOSDefines -DDDXTIME
++# define ServerExtraDefines	-DGCCUSESGAS XFree86ServerDefines
++#endif /* LoongArch32Architecture */
++
+ #ifndef StandardDefines
+ # ifdef __linux__
+ #  define StandardDefines	-Dlinux LinuxMachineDefines LinuxSourceDefines

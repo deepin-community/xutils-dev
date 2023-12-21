@@ -1,8 +1,6 @@
-Index: xutils-dev-7.7.2/xorg-cf-files/bsdLib.rules
-===================================================================
---- xutils-dev-7.7.2.orig/xorg-cf-files/bsdLib.rules
-+++ xutils-dev-7.7.2/xorg-cf-files/bsdLib.rules
-@@ -13,6 +13,12 @@ XCOMM $XFree86: xc/config/cf/bsdLib.rule
+--- a/xorg-cf-files/bsdLib.rules
++++ b/xorg-cf-files/bsdLib.rules
+@@ -13,6 +13,12 @@
  #define UseElfFormat NO
  #endif
  
@@ -15,7 +13,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/bsdLib.rules
  #if !UseElfFormat
  /* a.out shared libs */
  #ifndef HasSharedLibraries
-@@ -91,6 +97,34 @@ clean::									@@\
+@@ -91,6 +97,34 @@
  
  #endif /* SharedDepLibraryTarget */
  
@@ -50,11 +48,9 @@ Index: xutils-dev-7.7.2/xorg-cf-files/bsdLib.rules
  #ifndef SharedDepModuleTarget
  #define SharedDepModuleTarget(name,deps,solist)				@@\
  AllTarget(name)								@@\
-Index: xutils-dev-7.7.2/xorg-cf-files/gnu.cf
-===================================================================
---- xutils-dev-7.7.2.orig/xorg-cf-files/gnu.cf
-+++ xutils-dev-7.7.2/xorg-cf-files/gnu.cf
-@@ -17,16 +17,231 @@ XCOMM $XdotOrg: xc/config/cf/gnu.cf,v 1.
+--- a/xorg-cf-files/gnu.cf
++++ b/xorg-cf-files/gnu.cf
+@@ -17,16 +17,231 @@
  #ifndef OSTeenyVersion
  #define OSTeenyVersion		DefaultOSTeenyVersion
  #endif
@@ -292,7 +288,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/gnu.cf
  #define HasPosixThreads         YES
  #define ThreadedX               YES
  #define HasThreadSafeAPI        YES
-@@ -36,35 +251,132 @@ XCOMM XXXMB: What about _GNU_SOURCE, see
+@@ -36,35 +251,132 @@
  #ifndef HasLibCrypt
  #define HasLibCrypt             YES
  #endif
@@ -428,7 +424,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/gnu.cf
  #define AvoidNullMakeCommand	YES
  #ifndef DebuggableLibraries
  #define DebuggableLibraries	NO
-@@ -84,32 +396,64 @@ XCOMM Not implemented and will always fa
+@@ -84,32 +396,64 @@
  #define UseStaticTermcapLib	NO
  #endif
  
@@ -501,7 +497,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/gnu.cf
  #define YaccCmd			bison -y
  #define LexCmd			flex -l
  #define HasFlex			YES
-@@ -125,50 +469,68 @@ XCOMM Not implemented and will always fa
+@@ -125,50 +469,68 @@
  #define StandardCppDefines	StandardDefines
  
  #define HasVarRun		YES
@@ -593,7 +589,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/gnu.cf
  #define HasGnuMake	YES
  
  #define MakeNamedTargetSubdir(dir,flags,subname)\
-@@ -176,12 +538,16 @@ XCOMM i386Architecture
+@@ -176,12 +538,16 @@
  
  #define ArchitectureDefines	-DGNU_ARCHITECTURE
  
@@ -615,10 +611,8 @@ Index: xutils-dev-7.7.2/xorg-cf-files/gnu.cf
 +#ifndef XFree86ServerOSDefines
 +# define XFree86ServerOSDefines
 +#endif
-Index: xutils-dev-7.7.2/xorg-cf-files/gnuLib.rules
-===================================================================
---- xutils-dev-7.7.2.orig/xorg-cf-files/gnuLib.rules
-+++ xutils-dev-7.7.2/xorg-cf-files/gnuLib.rules
+--- a/xorg-cf-files/gnuLib.rules
++++ b/xorg-cf-files/gnuLib.rules
 @@ -17,7 +17,6 @@
  #define ForceNormalLib NO
  #endif
@@ -627,7 +621,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/gnuLib.rules
  #ifndef UseRpath
  #define UseRpath NO
  #endif
-@@ -26,10 +25,13 @@ XCOMM XXX To rpath or not to rpath...
+@@ -26,10 +25,13 @@
  #define SharedOldX NO
  #endif
  
@@ -642,7 +636,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/gnuLib.rules
  
  #ifndef SharedDataSeparation
  #define SharedDataSeparation NO
-@@ -45,7 +47,7 @@ XCOMM XXX To rpath or not to rpath...
+@@ -45,7 +47,7 @@
  #endif
  #ifndef RpathLoadFlags
  #if UseRpath
@@ -651,7 +645,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/gnuLib.rules
  #else
  #define RpathLoadFlags /**/
  #endif
-@@ -54,7 +56,7 @@ XCOMM XXX To rpath or not to rpath...
+@@ -54,7 +56,7 @@
  #define LibraryRpathLoadFlags RpathLoadFlags
  #endif
  #ifndef SharedLibraryLoadFlags
@@ -660,7 +654,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/gnuLib.rules
  #endif
  #ifndef PositionIndependentCFlags
  #define PositionIndependentCFlags -fPIC
-@@ -63,12 +65,13 @@ XCOMM XXX To rpath or not to rpath...
+@@ -63,12 +65,13 @@
  #define PositionIndependentCplusplusFlags -fPIC
  #endif
  #ifndef ExtraLoadFlags
@@ -679,7 +673,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/gnuLib.rules
  #endif
  
  /*
-@@ -87,6 +90,26 @@ install:: Concat(lib,libname.so.rev)
+@@ -87,6 +90,26 @@
  	  $(LN) Concat(lib,libname.so.rev) Concat($(DESTDIR)dest/lib,libname.so)); fi
  #endif /* InstallSharedLibrary */
  
@@ -706,7 +700,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/gnuLib.rules
  /*
   * InstallSharedLibraryData - generate rules to install the shared library data
   */
-@@ -106,9 +129,9 @@ AllTarget(Concat(lib,libname.so.rev))
+@@ -106,9 +129,9 @@
  									@@\
  Concat(lib,libname.so.rev):  solist $(EXTRALIBRARYDEPS)			@@\
  	$(RM) $@~							@@\
@@ -719,7 +713,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/gnuLib.rules
  		LinkBuildSonameLibrary($$SONAME)			@@\
  	$(RM) $@							@@\
  	$(MV) $@~ $@							@@\
-@@ -125,6 +148,38 @@ clean::									@@\
+@@ -125,6 +148,38 @@
  
  #endif /* SharedLibraryTarget */
  
@@ -758,7 +752,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/gnuLib.rules
  /*
   * SharedDepLibraryTarget - generate rules to create a shared library.
   */
-@@ -153,6 +208,34 @@ clean::									@@\
+@@ -153,6 +208,34 @@
  
  #endif /* SharedDepLibraryTarget */
  
@@ -793,7 +787,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/gnuLib.rules
  #ifndef SharedDepModuleTarget
  #define SharedDepModuleTarget(name,deps,solist)				@@\
  AllTarget(name)								@@\
-@@ -168,6 +251,23 @@ clean::									@@\
+@@ -168,6 +251,23 @@
  
  #endif /* SharedDepModuleTarget */
  
@@ -817,10 +811,8 @@ Index: xutils-dev-7.7.2/xorg-cf-files/gnuLib.rules
  /*
   * SharedLibraryDataTarget - generate rules to create shlib data file;
   */
-Index: xutils-dev-7.7.2/xorg-cf-files/gnuLib.tmpl
-===================================================================
---- xutils-dev-7.7.2.orig/xorg-cf-files/gnuLib.tmpl
-+++ xutils-dev-7.7.2/xorg-cf-files/gnuLib.tmpl
+--- a/xorg-cf-files/gnuLib.tmpl
++++ b/xorg-cf-files/gnuLib.tmpl
 @@ -1,8 +1,9 @@
 -XCOMM
 -XCOMM  GNU Hurd shared library template
@@ -836,7 +828,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/gnuLib.tmpl
  
  #ifndef FixupLibReferences
  #define FixupLibReferences()						@@\
-@@ -14,15 +15,71 @@ XMULIB = $(XMULIBONLY) $(XTOOLLIB) $(XLI
+@@ -14,15 +15,71 @@
  #define XawClientLibs $(XAWLIB) $(XMULIBONLY) $(XTOOLLIB) $(XPMLIB) $(EXTRAXAWCLIENTLIBS) $(XLIB)
  #endif
  
@@ -910,11 +902,9 @@ Index: xutils-dev-7.7.2/xorg-cf-files/gnuLib.tmpl
 +#endif
 +
 +#define NoMessageCatalog
-Index: xutils-dev-7.7.2/xorg-cf-files/Imake.rules
-===================================================================
---- xutils-dev-7.7.2.orig/xorg-cf-files/Imake.rules
-+++ xutils-dev-7.7.2/xorg-cf-files/Imake.rules
-@@ -2722,6 +2722,20 @@ LibraryTargetName(libname): objlist1 obj
+--- a/xorg-cf-files/Imake.rules
++++ b/xorg-cf-files/Imake.rules
+@@ -2722,6 +2722,20 @@
  
  
  /*
@@ -935,11 +925,9 @@ Index: xutils-dev-7.7.2/xorg-cf-files/Imake.rules
   * SubdirLibraryRule -
   */
  #ifndef SubdirLibraryRule
-Index: xutils-dev-7.7.2/xorg-cf-files/Imake.tmpl
-===================================================================
---- xutils-dev-7.7.2.orig/xorg-cf-files/Imake.tmpl
-+++ xutils-dev-7.7.2/xorg-cf-files/Imake.tmpl
-@@ -902,37 +902,82 @@ TCLIBDIR = TclLibDir
+--- a/xorg-cf-files/Imake.tmpl
++++ b/xorg-cf-files/Imake.tmpl
+@@ -902,37 +902,82 @@
  #define ManSourcePath $(MANPATH)/man
  #endif
  #ifndef ManDir
@@ -1037,7 +1025,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/Imake.tmpl
  #endif
  #ifndef AdminManDefs
  #define AdminManDefs -D__adminmansuffix__=$(ADMINMANSUFFIX)
-@@ -963,6 +1008,21 @@ TCLIBDIR = TclLibDir
+@@ -963,6 +1008,21 @@
  #endif
  #endif
  
@@ -1059,7 +1047,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/Imake.tmpl
  #ifndef LogDirectory
  #if HasVarDirectory
  #define LogDirectory $(VARDIR)/log
-@@ -1609,32 +1669,50 @@ TCLIBDIR = TclLibDir
+@@ -1609,32 +1669,50 @@
  #ifndef SHsuf
  #define SHsuf sh
  #endif
@@ -1123,7 +1111,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/Imake.tmpl
  #endif
  #ifndef AdminManSuffix
  #if SystemV || SystemV4
-@@ -1763,9 +1841,15 @@ TCLIBDIR = TclLibDir
+@@ -1763,9 +1841,15 @@
            MANPATH = ManPath		/* top of manual page tree */
      MANSOURCEPATH = ManSourcePath	/* prefix for man page sources */
             MANDIR = ManDir		/* man pages for commands */
@@ -1140,7 +1128,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/Imake.tmpl
       DRIVERMANDIR = DriverManDir	/* man pages for drivers */
       LOGDIRECTORY = LogDirectory	/* OS location of log files */
  #ifdef VarRunDirectory
-@@ -1872,15 +1956,30 @@ CXXEXTRA_INCLUDES = CplusplusExtraInclud
+@@ -1872,15 +1956,30 @@
               PERL = PerlCmd
           PERLOPTS = PerlOptions
       PERLENVSETUP = PerlEnvSetup
@@ -1173,11 +1161,9 @@ Index: xutils-dev-7.7.2/xorg-cf-files/Imake.tmpl
  
     COMPRESSMANCMD = CompressManCmd
  
-Index: xutils-dev-7.7.2/xorg-cf-files/Library.tmpl
-===================================================================
---- xutils-dev-7.7.2.orig/xorg-cf-files/Library.tmpl
-+++ xutils-dev-7.7.2/xorg-cf-files/Library.tmpl
-@@ -37,6 +37,14 @@ XCOMM $XFree86: xc/config/cf/Library.tmp
+--- a/xorg-cf-files/Library.tmpl
++++ b/xorg-cf-files/Library.tmpl
+@@ -37,6 +37,14 @@
  #define DoExtraLib NO
  #endif
  
@@ -1192,7 +1178,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/Library.tmpl
  #ifndef HasSharedData
  #define HasSharedData NO
  #endif
-@@ -53,7 +61,7 @@ SHLIBGLOBALSFLAGS = ShlibGlobalsFlags
+@@ -53,7 +61,7 @@
  #endif
  
  #ifndef LibraryCplusplusOptions
@@ -1201,7 +1187,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/Library.tmpl
  #  define LibraryCplusplusOptions SharedLibraryCplusplusOptions
  # else
  #  define LibraryCplusplusOptions DefaultCplusplusOptions
-@@ -85,14 +93,14 @@ SHLIBGLOBALSFLAGS = ShlibGlobalsFlags
+@@ -85,14 +93,14 @@
  
  #ifndef CplusplusSource
  # ifndef LibraryCcCmd
@@ -1218,7 +1204,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/Library.tmpl
  #   define LibraryCCOptions SharedLibraryCCOptions
  #  else
  #   define LibraryCCOptions DefaultCCOptions
-@@ -121,7 +129,7 @@ CLIBDEBUGFLAGS = LibraryDebugOpt
+@@ -121,7 +129,7 @@
  #else
  # ifndef CrossCompileDir
  #  ifndef LibraryCplusplusCmd
@@ -1227,7 +1213,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/Library.tmpl
  #    define LibraryCplusplusCmd SharedLibraryCplusplusCmd
  #   else
  #    define LibraryCplusplusCmd CplusplusCmd
-@@ -129,7 +137,7 @@ CLIBDEBUGFLAGS = LibraryDebugOpt
+@@ -129,7 +137,7 @@
  #  endif
  # else
  #  ifndef CrossLibraryCplusplusCmd
@@ -1236,7 +1222,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/Library.tmpl
  #    define CrossLibraryCplusplusCmd Concat3(CrossCompileDir,/,StripPath(SharedLibraryCplusplusCmd))
  #   else
  #    define CrossLibraryCplusplusCmd Concat3(CrossCompileDir,/,StripPath(CplusplusCmd))
-@@ -138,7 +146,7 @@ CLIBDEBUGFLAGS = LibraryDebugOpt
+@@ -138,7 +146,7 @@
  # endif
  
  # ifndef LibraryCplusplusOptions
@@ -1245,7 +1231,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/Library.tmpl
  #   define LibraryCplusplusOptions SharedLibraryCplusplusOptions
  #  else
  #   define LibraryCplusplusOptions DefaultCplusplusOptions
-@@ -204,14 +212,14 @@ LIB_MT_DEFINES = LibraryMTDefines
+@@ -204,14 +212,14 @@
  # define _NormalObjCplusplusCompile(options) $(_NULLCMD_)
  # define _NormalCleanDir() $(_NULLCMD_)
  #else
@@ -1262,7 +1248,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/Library.tmpl
  #   define _NormalObjCompile(options) NormalRelocLibObjCompile(options)
  #  else
  #   define _NormalObjCompile(options) NormalLibObjCompile(options)
-@@ -221,7 +229,7 @@ LIB_MT_DEFINES = LibraryMTDefines
+@@ -221,7 +229,7 @@
  # endif
  #endif
  
@@ -1271,7 +1257,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/Library.tmpl
  # define _SharedObjCompile(options) $(_NULLCMD_)
  # define _SharedObjCplusplusCompile(options) $(_NULLCMD_)
  #else
-@@ -517,6 +525,12 @@ DebuggedLibraryTarget($(LIBNAME),$(OBJS)
+@@ -517,6 +525,12 @@
  InstallLibrary($(LIBNAME)_d,$(USRLIBDIR))
  #   endif
  #  endif
@@ -1284,11 +1270,9 @@ Index: xutils-dev-7.7.2/xorg-cf-files/Library.tmpl
  #  if DoExtraLib && defined(ExtraLibRules)
  ExtraLibraryTarget($(LIBNAME),$(SoRev),$(OBJS) $(EXTRAUNSHAREDOBJS))
  #   if !defined(LibInstall) || LibInstall
-Index: xutils-dev-7.7.2/xorg-cf-files/linux.cf
-===================================================================
---- xutils-dev-7.7.2.orig/xorg-cf-files/linux.cf
-+++ xutils-dev-7.7.2/xorg-cf-files/linux.cf
-@@ -107,31 +107,48 @@ XCOMM operating system:  OSName (OSMajor
+--- a/xorg-cf-files/linux.cf
++++ b/xorg-cf-files/linux.cf
+@@ -107,31 +107,48 @@
  XCOMM libc:	(LinuxCLibMajorVersion./**/LinuxCLibMinorVersion./**/LinuxCLibTeenyVersion)
  XCOMM binutils:	(LinuxBinUtilsMajorVersion)
  
@@ -1346,7 +1330,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/linux.cf
  # define FSUseSyslog		YES
  
  # define BuildLibGlxWithoutPIC  NO
-@@ -142,15 +159,12 @@ InstallNamedTargetNoClobber(install,file
+@@ -142,15 +159,12 @@
  # define MiscManSuffix         7x
  # define MiscManDir            $(MANSOURCEPATH)7
  
@@ -1365,7 +1349,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/linux.cf
  #  ifndef XorgCustomVersion
  #   define XorgCustomVersion		"Debian"
  #  endif
-@@ -158,47 +172,138 @@ InstallNamedTargetNoClobber(install,file
+@@ -158,47 +172,138 @@
  #   define BuilderEMailAddr		"debian-x@lists.debian.org"
  #  endif
  #  define XFree86Devel			YES
@@ -1537,7 +1521,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/linux.cf
  # endif /* DebianMaintainer */
  #endif /* LinuxDebian */
  
-@@ -597,11 +702,7 @@ InstallNamedTargetNoClobber(install,file
+@@ -591,11 +696,7 @@
  #define MkdirHierCmd		mkdir -p
  
  #ifndef HaveLib64
@@ -1549,7 +1533,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/linux.cf
  #endif
  
  #if UseElfFormat
-@@ -731,10 +832,10 @@ InstallNamedTargetNoClobber(install,file
+@@ -725,10 +826,10 @@
  # if UseElfFormat
  #  ifdef AlphaArchitecture
  #   define CcCmd		gcc -b alpha-linux
@@ -1561,7 +1545,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/linux.cf
  #  endif /* AlphaArchitecture */
  #  ifdef HPArchitecture
  #   define CcCmd		gcc
-@@ -746,10 +847,10 @@ InstallNamedTargetNoClobber(install,file
+@@ -740,10 +841,10 @@
  #  endif /* HPArchitecture */
  #  ifdef i386Architecture
  #   define CcCmd		gcc -b i486-linux
@@ -1573,7 +1557,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/linux.cf
  #  endif /* i386Architecture */
  #  ifdef ia64Architecture
  #   define CcCmd		gcc
-@@ -760,10 +861,10 @@ InstallNamedTargetNoClobber(install,file
+@@ -754,10 +855,10 @@
  #  endif /* ia64Architecture */
  #  ifdef Mc68020Architecture
  #   define CcCmd		gcc -b m68k-linux
@@ -1585,7 +1569,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/linux.cf
  #  endif /* Mc68020Architecture */
  #  ifdef AMD64Architecture
  #   define CcCmd                 gcc
-@@ -776,7 +877,7 @@ InstallNamedTargetNoClobber(install,file
+@@ -770,7 +871,7 @@
  #  define CcCmd			gcc
  #  define AsCmd			CcCmd -c -x assembler
  #  define LdCmd			CcCmd -nostdlib
@@ -1594,7 +1578,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/linux.cf
  # endif
  #endif
  
-@@ -843,7 +944,7 @@ InstallNamedTargetNoClobber(install,file
+@@ -837,7 +938,7 @@
  
  #ifdef AlphaArchitecture
  # ifndef OptimizedCDebugFlags
@@ -1603,7 +1587,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/linux.cf
  # endif
  # define LinuxMachineDefines	-D__alpha__
  # define ServerOSDefines	XFree86ServerOSDefines -DDDXTIME
-@@ -856,7 +957,7 @@ InstallNamedTargetNoClobber(install,file
+@@ -850,7 +951,7 @@
  #ifdef Arm32Architecture
  # define DefaultCCOptions
  # ifndef OptimizedCDebugFlags
@@ -1612,7 +1596,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/linux.cf
  # endif
  # define LinuxMachineDefines	-D__arm__ -D__arm32__ -U__arm -Uarm
  # define ServerOSDefines	XFree86ServerOSDefines -DDDXTIME
-@@ -864,7 +965,9 @@ InstallNamedTargetNoClobber(install,file
+@@ -858,7 +959,9 @@
  #endif /* Arm32Achitecture */
  
  #ifdef HPArchitecture
@@ -1623,7 +1607,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/linux.cf
  # define LinuxMachineDefines	-D__hppa__
  # define ServerOSDefines	XFree86ServerOSDefines -DDDXTIME
  # define ServerExtraDefines	-DGCCUSESGAS XFree86ServerDefines
-@@ -872,7 +975,7 @@ InstallNamedTargetNoClobber(install,file
+@@ -866,7 +969,7 @@
  
  #ifdef i386Architecture
  # ifndef OptimizedCDebugFlags
@@ -1632,7 +1616,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/linux.cf
  # endif
  # define LinuxMachineDefines	-D__i386__
  # define ServerOSDefines	XFree86ServerOSDefines -DDDXTIME
-@@ -881,7 +984,7 @@ InstallNamedTargetNoClobber(install,file
+@@ -875,7 +978,7 @@
  
  #ifdef ia64Architecture
  # ifndef OptimizedCDebugFlags
@@ -1641,7 +1625,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/linux.cf
  # endif
  # define LinuxMachineDefines	-D__ia64__
  # define ServerOSDefines	XFree86ServerOSDefines -DDDXTIME
-@@ -890,7 +993,7 @@ InstallNamedTargetNoClobber(install,file
+@@ -884,7 +987,7 @@
  
  #ifdef Mc68020Architecture
  # ifndef OptimizedCDebugFlags
@@ -1650,7 +1634,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/linux.cf
  # endif
  # define LinuxMachineDefines	-D__mc68000__
  # define ServerOSDefines	XFree86ServerOSDefines -DDDXTIME
-@@ -918,7 +1021,7 @@ InstallNamedTargetNoClobber(install,file
+@@ -912,7 +1015,7 @@
  #ifdef Ppc64Architecture
  # define DefaultCCOptions	-mminimal-toc
  # ifndef OptimizedCDebugFlags
@@ -1659,7 +1643,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/linux.cf
  # endif
  # define LinuxMachineDefines	-D__powerpc64__ -D__powerpc__
  # define ServerOSDefines	XFree86ServerOSDefines -DDDXTIME -DPART_NET
-@@ -928,7 +1031,7 @@ InstallNamedTargetNoClobber(install,file
+@@ -922,7 +1025,7 @@
  #ifdef PpcArchitecture
  # define DefaultCCOptions
  # ifndef OptimizedCDebugFlags
@@ -1668,7 +1652,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/linux.cf
  # endif
  # define LinuxMachineDefines	-D__powerpc__
  # define ServerOSDefines	XFree86ServerOSDefines -DDDXTIME
-@@ -937,7 +1040,7 @@ InstallNamedTargetNoClobber(install,file
+@@ -931,7 +1034,7 @@
  
  #ifdef s390Architecture
  # ifndef OptimizedCDebugFlags
@@ -1677,7 +1661,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/linux.cf
  # endif
  # define LinuxMachineDefines	-D__s390__
  # define ServerOSDefines	XFree86ServerOSDefines -DDDXTIME
-@@ -945,16 +1048,17 @@ InstallNamedTargetNoClobber(install,file
+@@ -939,16 +1042,17 @@
  #endif /* s390Architecture */
  
  #ifdef s390xArchitecture
@@ -1699,7 +1683,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/linux.cf
  # endif
  # define LinuxMachineDefines	-D__sparc__
  # define ServerOSDefines	XFree86ServerOSDefines -DDDXTIME
-@@ -985,7 +1089,7 @@ InstallNamedTargetNoClobber(install,file
+@@ -979,7 +1083,7 @@
  #  endif
  # endif
  # ifndef OptimizedCDebugFlags
@@ -1708,7 +1692,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/linux.cf
  # endif
  # define LinuxMachineDefines	-D__sh__
  # define ServerOSDefines	XFree86ServerOSDefines -DDDXTIME
-@@ -997,7 +1101,7 @@ InstallNamedTargetNoClobber(install,file
+@@ -991,7 +1095,7 @@
  
  #ifdef AMD64Architecture
  # ifndef OptimizedCDebugFlags
@@ -1717,7 +1701,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/linux.cf
  # endif
  # define LinuxMachineDefines   -D__amd64__
  # define ServerOSDefines	XFree86ServerOSDefines -DDDXTIME
-@@ -1006,7 +1110,7 @@ InstallNamedTargetNoClobber(install,file
+@@ -1000,7 +1104,7 @@
  
  #ifdef AArch64Architecture
  # ifndef OptimizedCDebugFlags
@@ -1726,7 +1710,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/linux.cf
  # endif
  # define LinuxMachineDefines   -D__aarch64__
  # define ServerOSDefines   XFree86ServerOSDefines -DDDXTIME
-@@ -1047,26 +1151,6 @@ InstallNamedTargetNoClobber(install,file
+@@ -1041,26 +1145,6 @@
  # define ConnectionFlags	-DUNIXCONN -DTCPCONN
  #endif
  
@@ -1753,7 +1737,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/linux.cf
  #ifndef StaticLibrary
  # define StaticLibrary(libpath,libname) -Wl,-Bstatic Concat(-L,libpath) Concat(-l,libname) -Wl,-Bdynamic
  #endif
-@@ -1111,3 +1195,59 @@ InstallNamedTargetNoClobber(install,file
+@@ -1105,3 +1189,59 @@
  #ifndef XFree86ServerOSDefines
  # define XFree86ServerOSDefines
  #endif
@@ -1813,11 +1797,9 @@ Index: xutils-dev-7.7.2/xorg-cf-files/linux.cf
 +   SELINUX_LIBS = SELinuxLibraries
 +# endif
 +#endif
-Index: xutils-dev-7.7.2/xorg-cf-files/NetBSD.cf
-===================================================================
---- xutils-dev-7.7.2.orig/xorg-cf-files/NetBSD.cf
-+++ xutils-dev-7.7.2/xorg-cf-files/NetBSD.cf
-@@ -18,12 +18,178 @@ XCOMM platform:  $XFree86: xc/config/cf/
+--- a/xorg-cf-files/NetBSD.cf
++++ b/xorg-cf-files/NetBSD.cf
+@@ -18,12 +18,178 @@
  #define OSTeenyVersion		DefaultOSTeenyVersion
  #endif
  
@@ -1997,7 +1979,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/NetBSD.cf
  /*
   * C library features
   */
-@@ -93,8 +259,12 @@ XCOMM operating system:  OSName (OSMajor
+@@ -93,8 +259,12 @@
  
  #define HasUsableFileMmap	YES
  
@@ -2011,7 +1993,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/NetBSD.cf
  
  #define HasShadowPasswd		NO
  
-@@ -207,6 +377,8 @@ XCOMM operating system:  OSName (OSMajor
+@@ -207,6 +377,8 @@
  
  #if UseElfFormat
  #define DlLibrary		-rdynamic /* no -ldl yet */
@@ -2020,7 +2002,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/NetBSD.cf
  #else
  #define DlLibrary		/**/
  #endif
-@@ -336,6 +508,10 @@ XCOMM operating system:  OSName (OSMajor
+@@ -336,6 +508,10 @@
  /* NetBSD doesn't have gperf in the base install */
  #define DontRebuildGperfOutput	YES
  
@@ -2031,7 +2013,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/NetBSD.cf
  /*
   * NetBSD doesn't have perl in default system
   * you may override this in host.def if you installed perl from the packages
-@@ -355,7 +531,13 @@ XCOMM operating system:  OSName (OSMajor
+@@ -355,7 +531,13 @@
  /*
   * Make & install Features
   */
@@ -2045,7 +2027,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/NetBSD.cf
  #define CompressAllFonts	YES
  #define GzipFontCompression	YES
  #define DefaultUserPath		/bin:/usr/bin:/usr/pkg/bin:/usr/local/bin:$(BINDIR)
-@@ -463,6 +645,8 @@ dirs:	.EXEC								@@\
+@@ -463,6 +645,8 @@
  									@@\
  .EXEC:
  
@@ -2054,7 +2036,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/NetBSD.cf
  /*
   * Man pages need to be formatted when installed, so override the default
   * imake rules.
-@@ -552,6 +736,8 @@ InstallHtmlManPageAliases(file,aliases,s
+@@ -552,6 +736,8 @@
  									@@\
  InstallManPageAliasesBase(file,destdir,aliases)
  
@@ -2063,11 +2045,9 @@ Index: xutils-dev-7.7.2/xorg-cf-files/NetBSD.cf
  /*
   * Shared libraries supported starting in 1.0 on a.out platforms,
   * and on all ELF platforms.
-Index: xutils-dev-7.7.2/xorg-cf-files/sco5.cf
-===================================================================
---- xutils-dev-7.7.2.orig/xorg-cf-files/sco5.cf
-+++ xutils-dev-7.7.2/xorg-cf-files/sco5.cf
-@@ -69,7 +69,7 @@ XCOMM $XdotOrg: xc/config/cf/sco5.cf,v 1
+--- a/xorg-cf-files/sco5.cf
++++ b/xorg-cf-files/sco5.cf
+@@ -69,7 +69,7 @@
  #endif
  
  #ifndef UseExportLists
@@ -2076,11 +2056,9 @@ Index: xutils-dev-7.7.2/xorg-cf-files/sco5.cf
  #endif
  
  #define StandardDefines		-DSYSV -Di386 -DSCO325 -D__SCO__
-Index: xutils-dev-7.7.2/xorg-cf-files/usl.cf
-===================================================================
---- xutils-dev-7.7.2.orig/xorg-cf-files/usl.cf
-+++ xutils-dev-7.7.2/xorg-cf-files/usl.cf
-@@ -159,7 +159,7 @@ XCOMM operating system: OSName (OSMajorV
+--- a/xorg-cf-files/usl.cf
++++ b/xorg-cf-files/usl.cf
+@@ -159,7 +159,7 @@
  #endif
  
  #ifndef UseExportLists
@@ -2089,11 +2067,9 @@ Index: xutils-dev-7.7.2/xorg-cf-files/usl.cf
  #endif
  
  #define GencatFlags		-m
-Index: xutils-dev-7.7.2/xorg-cf-files/X11.tmpl
-===================================================================
---- xutils-dev-7.7.2.orig/xorg-cf-files/X11.tmpl
-+++ xutils-dev-7.7.2/xorg-cf-files/X11.tmpl
-@@ -614,23 +614,29 @@ XORGRELSTRING = XorgManVersionString
+--- a/xorg-cf-files/X11.tmpl
++++ b/xorg-cf-files/X11.tmpl
+@@ -614,23 +614,29 @@
  #ifndef BuildRender
  #define BuildRender		YES
  #endif
@@ -2127,7 +2103,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/X11.tmpl
  				 UseFontconfig || BuildFreeType)
  #endif
  #ifndef InstallFontconfigLibrary
-@@ -700,8 +706,12 @@ XORGRELSTRING = XorgManVersionString
+@@ -700,8 +706,12 @@
  #define BuildXkbcomp		BuildClients
  #endif
  
@@ -2141,7 +2117,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/X11.tmpl
  #endif
  
  #ifndef BuildXcursorgen
-@@ -1170,7 +1180,7 @@ FCHOWN_DEFINES = -DHAS_FCHOWN
+@@ -1170,7 +1180,7 @@
  #endif
  
  #ifndef RenderDefines
@@ -2150,7 +2126,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/X11.tmpl
  #define RenderDefines -DRENDER
  #else
  #define RenderDefines /**/
-@@ -2669,6 +2679,7 @@ SharedDSLibReferences(GLW,GLw,$(GLWIDGET
+@@ -2669,6 +2679,7 @@
  ProjectUnsharedLibReferences(GLW,GLw,$(GLWIDGETSRC),XBuildLibDir)
  #endif
  
@@ -2158,7 +2134,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/X11.tmpl
      XRENDERLIBSRC = $(LIBSRC)/Xrender
  #if SharedLibXrender
  #ifndef SharedXrenderRev
-@@ -2679,6 +2690,42 @@ SharedLibReferences(XRENDER,Xrender,$(XR
+@@ -2679,6 +2690,42 @@
  ProjectUnsharedLibReferences(XRENDER,Xrender,$(XRENDERLIBSRC),XBuildLibDir)
  #endif
  
@@ -2201,7 +2177,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/X11.tmpl
      XRANDRLIBSRC = $(LIBSRC)/Xrandr
  #if SharedLibXrandr
  #ifndef SharedXrandrRev
-@@ -2729,6 +2776,7 @@ SharedLibReferences(XEVIE,Xevie,$(XEVIEL
+@@ -2729,6 +2776,7 @@
  ProjectUnsharedLibReferences(XEVIE,Xevie,$(XEVIELIBSRC),XBuildLibDir)
  #endif
  
@@ -2209,7 +2185,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/X11.tmpl
     XCURSORLIBSRC = $(LIBSRC)/Xcursor
  #if SharedLibXcursor
  #ifndef SharedXcursorRev
-@@ -2739,6 +2787,41 @@ SharedLibReferences(XCURSOR,Xcursor,$(XC
+@@ -2739,6 +2787,41 @@
  ProjectUnsharedLibReferences(XCURSOR,Xcursor,$(XCURSORLIBSRC),XBuildLibDir)
  #endif
  
@@ -2251,7 +2227,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/X11.tmpl
     APPLEWMLIBSRC = $(LIBSRC)/apple
  #if SharedLibAppleWM
  #ifndef SharedAppleWMRev
-@@ -3544,6 +3627,7 @@ EXPATDEFINES = -DEXPAT
+@@ -3544,6 +3627,7 @@
  
  #endif /* UseExpat */
  
@@ -2259,7 +2235,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/X11.tmpl
  #ifndef SharedLibXft1
  #define SharedLibXft1 HasSharedLibraries
  #endif
-@@ -3556,6 +3640,18 @@ EXPATDEFINES = -DEXPAT
+@@ -3556,6 +3640,18 @@
  #ifndef ProfileLibXft1
  #define ProfileLibXft1		NO
  #endif
@@ -2278,7 +2254,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/X11.tmpl
            XFT1LIBSRC = $(LIBSRC)/Xft1
  #if SharedLibXft1
  #ifndef SharedXft1Rev
-@@ -3610,6 +3706,42 @@ ProjectUnsharedLibReferences(XFT,Xft,$(X
+@@ -3610,6 +3706,42 @@
  #define XftClientLibs $(XFTLIB) FontconfigClientLibs $(XRENDERLIB)
  #endif
  
@@ -2321,7 +2297,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/X11.tmpl
  #if UseFontconfig
  
  #if BuildFontconfigLibrary
-@@ -3725,8 +3857,6 @@ FONTCONFIGDEFINES = -DFONTCONFIG
+@@ -3725,8 +3857,6 @@
  
  #endif /* UseFontconfig */
  
@@ -2330,11 +2306,9 @@ Index: xutils-dev-7.7.2/xorg-cf-files/X11.tmpl
  #ifdef HasLibpng
  
  /*
-Index: xutils-dev-7.7.2/xorg-cf-files/xfree86.cf
-===================================================================
---- xutils-dev-7.7.2.orig/xorg-cf-files/xfree86.cf
-+++ xutils-dev-7.7.2/xorg-cf-files/xfree86.cf
-@@ -100,6 +100,13 @@ XCOMM $Xorg: xfree86.cf,v 1.4 2000/08/17
+--- a/xorg-cf-files/xfree86.cf
++++ b/xorg-cf-files/xfree86.cf
+@@ -100,6 +100,13 @@
  #define XVendorManNameString XFree86
  #endif
  
@@ -2348,7 +2322,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/xfree86.cf
  /*
   * This enables some settings for developers.
   */
-@@ -116,6 +123,15 @@ XCOMM $Xorg: xfree86.cf,v 1.4 2000/08/17
+@@ -116,6 +123,15 @@
  # endif
  #endif
  
@@ -2364,7 +2338,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/xfree86.cf
  #ifndef BuildDebug
  # define BuildDebug 		YES
  #endif
-@@ -233,6 +249,11 @@ XCOMM $Xorg: xfree86.cf,v 1.4 2000/08/17
+@@ -233,6 +249,11 @@
  #define GlideDriver /**/
  #endif
  
@@ -2376,7 +2350,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/xfree86.cf
  /*
   * There are three parameters that determine where and how the Matrox HAL
   * library is used:
-@@ -372,15 +393,17 @@ XCOMM $Xorg: xfree86.cf,v 1.4 2000/08/17
+@@ -372,15 +393,17 @@
  #  /* Don't build the nsc driver on IA64 */
  #  ifndef ia64Architecture
  #   define NscDriver		nsc
@@ -2395,7 +2369,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/xfree86.cf
  				fbdev vesa vga \
  				dummy XF86OSCardDrivers XF86ExtraCardDrivers
  # endif
-@@ -485,8 +508,11 @@ XCOMM $Xorg: xfree86.cf,v 1.4 2000/08/17
+@@ -485,8 +508,11 @@
  				vga dummy fbdev vesa
  # endif
  
@@ -2409,7 +2383,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/xfree86.cf
  
  # define DevelDRIDrivers	/**/
  
-@@ -579,9 +605,9 @@ XCOMM $Xorg: xfree86.cf,v 1.4 2000/08/17
+@@ -579,9 +605,9 @@
      * require changes (or even removal) for things like endianness, etc.  Move
      * those known to work into the main XF86CardDrivers #define.
      */
@@ -2422,7 +2396,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/xfree86.cf
  #  else
  #   define DevelDrivers		/* */
  #  endif
-@@ -872,8 +898,14 @@ XCOMM $Xorg: xfree86.cf,v 1.4 2000/08/17
+@@ -872,8 +898,14 @@
  				savage nv cirrus DevelDrivers siliconmotion  \
  				vga XF86OSCardDrivers XF86ExtraCardDrivers
  # endif
@@ -2438,7 +2412,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/xfree86.cf
  # endif
  #endif
  
-@@ -968,8 +1000,13 @@ XCOMM $Xorg: xfree86.cf,v 1.4 2000/08/17
+@@ -968,8 +1000,13 @@
  				DevelDrivers vga \
  				XF86OSCardDrivers XF86ExtraCardDrivers
  # endif
@@ -2453,7 +2427,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/xfree86.cf
  # endif
  #endif
  
-@@ -1066,7 +1103,7 @@ XCOMM $Xorg: xfree86.cf,v 1.4 2000/08/17
+@@ -1066,7 +1103,7 @@
  #  define TdfxDriDriver		/**/
  # endif
  # ifndef DriDrivers
@@ -2462,7 +2436,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/xfree86.cf
  # endif
  #endif
  
-@@ -1745,7 +1782,7 @@ IPLAN2P8_DEFS = -DUSE_IPLAN2P8
+@@ -1745,7 +1782,7 @@
  #endif
  #ifndef BuildScanpci
  # if SystemV || SystemV4 || \
@@ -2471,7 +2445,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/xfree86.cf
      defined(i386BsdArchitecture) || defined(LynxOSArchitecture) || \
      defined(OS2Architecture) || defined(GNUMachArchitecture) || \
      (defined(KFreeBSDArchitecture) && defined(i386Architecture))
-@@ -1943,10 +1980,6 @@ XFREE86JAPANESEDOCDIR = $(DOCDIR)/Japane
+@@ -1943,10 +1980,6 @@
  # define UseRgbTxt	YES
  #endif
  
@@ -2482,7 +2456,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/xfree86.cf
  /*
   * GNU Compiler stuff
   */
-@@ -2010,45 +2043,51 @@ XFREE86JAPANESEDOCDIR = $(DOCDIR)/Japane
+@@ -2010,45 +2043,51 @@
  # define GccAliasingArgs      /* */
  #endif
  
@@ -2541,11 +2515,9 @@ Index: xutils-dev-7.7.2/xorg-cf-files/xfree86.cf
  # endif
  #endif
  
-Index: xutils-dev-7.7.2/xorg-cf-files/xorg.cf
-===================================================================
---- xutils-dev-7.7.2.orig/xorg-cf-files/xorg.cf
-+++ xutils-dev-7.7.2/xorg-cf-files/xorg.cf
-@@ -262,6 +262,11 @@ RELEASE_VERSION = ReleaseVersion
+--- a/xorg-cf-files/xorg.cf
++++ b/xorg-cf-files/xorg.cf
+@@ -262,6 +262,11 @@
  #define GlideDriver /**/
  #endif
  
@@ -2557,7 +2529,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/xorg.cf
  /*
   * There are three parameters that determine where and how the Matrox HAL
   * library is used:
-@@ -425,7 +430,13 @@ RELEASE_VERSION = ReleaseVersion
+@@ -425,7 +430,13 @@
     /* SiS is 64-bit unclean as of this writing. */
  #   define i386DRIDrivers /**/
  #  endif
@@ -2572,7 +2544,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/xorg.cf
  # endif
  #endif /* i386Architecture || ia64Architecture */
  
-@@ -461,8 +472,13 @@ RELEASE_VERSION = ReleaseVersion
+@@ -461,8 +472,13 @@
  # endif
  
  /* SiS is 64-bit unclean as of this writing. */
@@ -2587,7 +2559,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/xorg.cf
  # endif
  #endif /*AMD64Arcitecture*/
  
-@@ -602,8 +618,13 @@ RELEASE_VERSION = ReleaseVersion
+@@ -602,8 +618,13 @@
   *  Glide is available for Alpha, therefore build tdfx DRM module.
   *  SiS is 64-bit unclean as of this writing.
   */
@@ -2602,7 +2574,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/xorg.cf
  # endif
  #endif /* AlphaArchitecture */
  
-@@ -767,7 +788,7 @@ RELEASE_VERSION = ReleaseVersion
+@@ -767,7 +788,7 @@
  # endif
  # define TdfxDriDriver		/**/
  # ifndef DriDrivers
@@ -2611,7 +2583,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/xorg.cf
  # endif
  #endif /* Ppc64Architecture */
  
-@@ -1480,10 +1501,6 @@ XFREE86JAPANESEDOCDIR = $(DOCDIR)/Japane
+@@ -1480,10 +1501,6 @@
  # define UseRgbTxt	YES
  #endif
  
@@ -2622,7 +2594,7 @@ Index: xutils-dev-7.7.2/xorg-cf-files/xorg.cf
  /*
   * GNU Compiler stuff
   */
-@@ -1557,49 +1574,49 @@ XFREE86JAPANESEDOCDIR = $(DOCDIR)/Japane
+@@ -1557,49 +1574,49 @@
  
  #if HasGcc2 && defined(i386Architecture)
  # ifndef DefaultGcc2i386Opt
